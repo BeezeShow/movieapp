@@ -13,4 +13,54 @@
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
+  gap: 7px;
+}
+.h5Class{
+  font-size: 20px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+max-width: 150px;
+  margin:0px;
+  font-family: Inter UI;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+.releaseDate {
+//styleName: @font-size-sm: 12px;
+  font-family: Inter UI;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color:  #827E7E
+}
+.overview{
+
+  overflow: hidden;                 /* скрывает выходящий текст */
+  display: -webkit-box;             /* создаёт блочный контейнер с поддержкой многострочности */
+  -webkit-line-clamp: 6;            /* ограничивает количество строк (в этом случае — 2 строки) */
+  -webkit-box-orient: vertical;     /* задает ориентацию коробки */
+  text-overflow: ellipsis;
+//styleName: @font-size-sm: 12px;
+  font-family: Inter UI;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+.genre{
+  display: flex;
+}
+
+.stars{
+  margin-top: auto;
 }
