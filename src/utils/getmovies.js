@@ -1,5 +1,5 @@
-export const getMovies = async () => {
-  const url = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=a'
+export const getMovies = async (p, q) => {
+  const url = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=${p}&query=${q}`
   const options = {
     method: 'GET',
     headers: {
