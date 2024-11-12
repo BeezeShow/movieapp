@@ -4,7 +4,7 @@ import {  useEffect,  useState } from 'react'
 import './App.css'
 import { Container } from './components/Container'
 import { getGenres, createSession } from './utils/getmovies.js'
-
+import { RatedPage } from './components/RatedPage' // Импорт RatedPage
 import { Tabs } from 'antd'
 
 import { SearchPage } from './components/SearchPage'
@@ -40,6 +40,7 @@ function App() {
             ]}
           />
           {activeTab === '1' && <SearchPage />}
+          {activeTab === '2' && <RatedPage />} {/* Компонент RatedPage */}
         </Container>
       </div>
     </AppContext.Provider>
