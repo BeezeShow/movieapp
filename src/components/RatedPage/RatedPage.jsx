@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from 'react'
 import { Pagination, Skeleton } from '@mui/material'
+import { toast } from 'react-toastify'
 
 import { AppContext } from '../../Context/AppContext'
 import { Card } from '../Card'
@@ -19,10 +20,14 @@ export const RatedPage = () => {
     setIsLoading(true)
     getRatedMovies(session, page)
       .then((res) => {
-        setRatedMovies(res.results)
+        console.log(res)
+        setRatedMovies(res.results || [])
         setTotalPage(res.total_pages)
       })
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        toast.error('ошибка')
+        console.error(err)
+      })
       .finally(() => setIsLoading(false))
   }
 

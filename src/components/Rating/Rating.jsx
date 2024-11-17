@@ -15,12 +15,11 @@ export const Rating = ({ voteValue }) => {
     if (voteValue >= 7 && voteValue <= 10) {
       return '#66E900'
     }
-
   }
 
   const color = `2px solid ${defineColor()}`
   const style = {
-    border:  color
+    border: color,
   }
 
   return (

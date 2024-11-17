@@ -1,14 +1,16 @@
-import {  useEffect,  useState } from 'react'
-
-
+import { useEffect, useState } from 'react'
 import './App.css'
+import { Tabs } from 'antd'
+import { ToastContainer, toast } from 'react-toastify'
+
 import { Container } from './components/Container'
 import { getGenres, createSession } from './utils/getmovies.js'
 import { RatedPage } from './components/RatedPage' // Импорт RatedPage
-import { Tabs } from 'antd'
-
 import { SearchPage } from './components/SearchPage'
 import { AppContext } from './Context/AppContext'
+
+import 'react-toastify/dist/ReactToastify.css'
+
 function App() {
   const [genres, setGenres] = useState({})
   const [activeTab, setActiveTab] = useState('1')
@@ -24,12 +26,42 @@ function App() {
         })
         setGenres(result)
       })
-      .catch((err) => console.error(err))
-    createSession().then((res) => {setSession(res.guest_session_id)}).catch((err) => {console.log(err)})
+      .catch((err) => {
+        toast.error('ошибка при получении списка жанров')
+        console.error(err)
+      })
+    const localSession = checkLocalSession()
+    if (!localSession) {
+      createSession()
+        .then((res) => {
+          setSession(res.guest_session_id)
+          window.localStorage.setItem('session', JSON.stringify(res))
+          window.localStorage.setItem('ratings', JSON.stringify({  }))
+        })
+        .catch((err) => {
+          toast.error('ошибка при создании сессии')
+          console.log(err)
+        })
+    } else {
+      setSession(localSession.guest_session_id)
+    }
   }, [])
+
+  const checkLocalSession = () => {
+    let session = window.localStorage.getItem('session')
+    if (!session) return false
+    else {
+      const expired = JSON.parse(session).expires_at
+      if (new Date().getTime() > new Date(expired).getTime()) return false
+    }
+
+    return JSON.parse(session)
+  }
+
   return (
     <AppContext.Provider value={{ genres, session }}>
       <div className="App">
+        <ToastContainer />
         <Container>
           <Tabs
             onTabClick={(key) => setActiveTab(key)}

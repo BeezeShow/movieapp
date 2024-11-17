@@ -17,3 +17,9 @@
   margin-top: 32px;
   margin-bottom: 10px;
 }
+@media(max-width: 1000px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+    margin-top: 10px;
+  }
+}

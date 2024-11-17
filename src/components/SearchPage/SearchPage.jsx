@@ -2,6 +2,7 @@ import { Input } from 'antd'
 import { Pagination, Skeleton } from '@mui/material'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { debounce } from 'lodash-es'
+import { toast } from 'react-toastify'
 
 import { Card } from '../Card'
 import { PlaceHolder } from '../PlaceHolder'
@@ -22,7 +23,10 @@ export const SearchPage = () => {
         setMovies(res.results.slice(0, 6))
         setTotalPage(res.total_pages)
       })
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        toast.error('ошибка')
+        console.error(err)
+      })
       .finally(() => setIsLoading(false))
   }
   const placeHolderText = useMemo(() => {
@@ -72,11 +76,7 @@ export const SearchPage = () => {
       ) : (
         <PlaceHolder text={placeHolderText} />
       )}
-      <Pagination
-        disabled={isLoading}
-        paget={page}
-        count={totalPage}
-        onChange={(_, page) => setPage(page)} />
+      <Pagination disabled={isLoading} paget={page} count={totalPage} onChange={(_, page) => setPage(page)} />
     </>
   )
 }

@@ -55,10 +55,6 @@ export const addRating = async (sessionId, movieId, rating) => {
 
   return fetch(url, options).then((res) => res.json())
 }
-
-
-//АААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
-
 export const getRatedMovies = async (sessionId, page = 1) => {
   const url = `https://api.themoviedb.org/3/guest_session/${sessionId}/rated/movies?language=en-US&page=${page}&sort_by=created_at.asc`
   const options = {
@@ -72,5 +68,3 @@ export const getRatedMovies = async (sessionId, page = 1) => {
 
   return fetch(url, options).then((res) => res.json())
 }
-
-
