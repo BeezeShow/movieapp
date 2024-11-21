@@ -64,7 +64,7 @@ export const SearchPage = () => {
       {isLoading ? (
         <div className="cardGrid">
           {Array.from({ length: 6 }).map(() => {
-            return <Skeleton height={281} />
+            return <Skeleton height={281} key={Math.random()} />
           })}
         </div>
       ) : movies.length ? (

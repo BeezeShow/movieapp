@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import cls from './Container.module.css'
 
 export const Container = ({ children }) => {

@@ -8,7 +8,7 @@ import { addRating } from '../../utils/getmovies'
 
 import cls from './Card.module.css'
 
-export const Card = ({ movie, genres }) => {
+export const Card = ({ movie }) => {
   const appContext = useContext(AppContext)
   const url = 'https://image.tmdb.org/t/p/original' + movie.poster_path
 
@@ -18,7 +18,7 @@ export const Card = ({ movie, genres }) => {
         console.log(r)
         updateLocalRating(rating)
       })
-      .catch((err) => {})
+      .catch(() => {})
   }
   const updateLocalRating = (rating) => {
     let ratings = window.localStorage.getItem('ratings')

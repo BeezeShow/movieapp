@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import cls from './Rating.module.css'
 
 export const Rating = ({ voteValue }) => {

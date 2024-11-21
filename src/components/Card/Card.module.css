@@ -65,19 +65,18 @@
 .stars {
   margin-top: auto;
 }
-.mobileImg{
+.mobileImg {
   display: none;
 }
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .leftSide {
     display: none;
   }
-  .container{
+  .container {
     grid-template-columns: 1fr;
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
-
   }
-  .mobileImg{
+  .mobileImg {
     display: block;
     width: 60px;
     height: 90px;
@@ -85,7 +84,7 @@
     background-position: center;
     background-size: cover;
   }
-  .header{
+  .header {
     display: flex;
     gap: 13px;
   }

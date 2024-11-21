@@ -36,7 +36,7 @@ function App() {
         .then((res) => {
           setSession(res.guest_session_id)
           window.localStorage.setItem('session', JSON.stringify(res))
-          window.localStorage.setItem('ratings', JSON.stringify({  }))
+          window.localStorage.setItem('ratings', JSON.stringify({}))
         })
         .catch((err) => {
           toast.error('ошибка при создании сессии')
